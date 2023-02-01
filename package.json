@@ -3,7 +3,12 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve frontend"
+    "start": "nx serve frontend && nx serve api",
+    "test": "nx test frontend",
+    "lint": "nx lint frontend",
+    "build": "nx build frontend",
+    "backend": "nx serve api",
+    "frontend": "nx serve frontend"
   },
   "private": true,
   "dependencies": {

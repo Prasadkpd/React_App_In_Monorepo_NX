@@ -10,6 +10,27 @@ const app = express();
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
+
+type Ticket = {
+  title: string;
+  id: number;
+};
+
+const tickets: Ticket[] = [
+  {
+    title: `Install updates`,
+    id: 1
+  },
+  {
+    title: `Restore the backup`,
+    id: 2
+  }
+];
+
+app.get('/api/tickets', (req, res) => {
+  res.send(tickets);
+});
+
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to api!' });
 });
