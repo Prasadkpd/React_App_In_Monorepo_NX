@@ -1,6 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
-import NxWelcome from './nx-welcome';
+import { Ticket } from '@prasadkpd/data';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const StyledApp = styled.div`
@@ -36,23 +35,16 @@ const StyledApp = styled.div`
   }
 `;
 
-type Ticket = {
-  title: string;
-  id: number;
-};
-
 const App = () => {
 
-  const tickets: Ticket[] = [
-    {
-      title: `Install updates`,
-      id: 1
-    },
-    {
-      title: `Restore the backup`,
-      id: 2
-    }
-  ];
+  const [tickets, setTickets] = useState<Ticket[]>([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3333/api/tickets')
+      .then(t => t.json())
+      .then(setTickets);
+    console.log(tickets);
+  }, []);
 
   return (
     <StyledApp>

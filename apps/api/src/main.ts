@@ -3,18 +3,13 @@
  * This is only a minimal backend to get started.
  */
 
+import { Ticket } from '@prasadkpd/data';
 import express from 'express';
 import * as path from 'path';
 
 const app = express();
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
-
-
-type Ticket = {
-  title: string;
-  id: number;
-};
 
 const tickets: Ticket[] = [
   {
